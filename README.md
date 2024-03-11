@@ -13,7 +13,6 @@
 `python3 hangman.py`
 
 ## Credits
-
 Made with IDLE and Visual Studio Code
 
 ## Hi
