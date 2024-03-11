@@ -45,7 +45,6 @@ def write_text(text):
 
 def draw_answer_lines():
     t.up()
-    # TODO(max): replace hardcoded numbers with computed numbers based on width and height of the screen
     t.goto(LETTERS_START_POS[0], LETTERS_START_POS[1])
 
     
@@ -62,6 +61,12 @@ def reveal_letter(letter, position):
 
     write_text(' ' + letter)
     t.speed(DRAWMAN_SPEED)
+
+def printFinalText(text):
+    time.sleep(3)
+    t.clear()
+    t.goto(0, 0)
+    t.write(text, True, "center", font=("Verdana", 100, "bold"))
     
 def drawMan(x):
     global last_man_pos
@@ -189,42 +194,42 @@ while True:
         print('Incorrect!')
 
     if remaining_wrong_guesses < 1:
-        print('You lose!')
+        printFinalText('You Lose!\n      😥')
+        print('You lose!\n😥')
+        time.sleep(5)
         break
 
     if len(remaining_answer) < 1:
-        print('You win!')
+        printFinalText('You Win!\n      😁')
+        print('You win!\n😁')
+        time.sleep(5)
         break
     
-        
-        
-        
-    
-exit(0)
 
 
-while wrong < 6 and not terminate:
-    letter = turtle.textinput("HANGMAN", "Guess a lowercase letter:")
-    if letter in answer:
-        correctGuess.append(letter)
-        print('Correct!')
-        print(correctGuess)
-        print(answer.index(letter) + 1)
-        right += 1
-        if right == len(answer):
-            print('You Win!')
-            print('Answer:', answer)
-            break
-    elif letter in incorrect:
-        print('You already guessed that')
-    else:
-        wrong += 1
-        print('Incorrect!')
-        drawMan(wrong)
-        incorrect.append(letter)
-        if wrong == 6:
-            print('Game Over!!!')
-            print('Answer:', answer)
-            drawMan(6)
-            time.sleep(5)
-            exit(0)
+
+# while wrong < 6 and not terminate:
+#     letter = turtle.textinput("HANGMAN", "Guess a lowercase letter:")
+#     if letter in answer:
+#         correctGuess.append(letter)
+#         print('Correct!')
+#         print(correctGuess)
+#         print(answer.index(letter) + 1)
+#         right += 1
+#         if right == len(answer):
+#             print('You Win!')
+#             print('Answer:', answer)
+#             break
+#     elif letter in incorrect:
+#         print('You already guessed that')
+#     else:
+#         wrong += 1
+#         print('Incorrect!')
+#         drawMan(wrong)
+#         incorrect.append(letter)
+#         if wrong == 6:
+#             print('Game Over!!!')
+#             print('Answer:', answer)
+#             drawMan(6)
+#             time.sleep(5)
+#             exit(0)
