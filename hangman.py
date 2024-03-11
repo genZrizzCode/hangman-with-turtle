@@ -3,15 +3,16 @@ import random
 import time
 t = turtle.Turtle()
 print('Only lowercase letters!\n')
-wordbank = [ 'smith', 'dog', 'yes', 'okay', 'sunday', 'we', 'cat', 'impacc', 'remote', 'wrong', 'short', 'video', 'super', 'idol']
+wordbank = [ 'smith', 'dog', 'yes', 'okay', 'sunday', 'we', 'cat', 'impacc', 'remote', 'wrong', 'short', 'video', 'super', 'idol' ]
+
+LETTERS_START_POS = [-100, -200]
+DRAWMAN_SPEED = 1
 
 # Start Turtle
 def init_turtle():    
     t.width(3)
     t.speed(0)
     t.hideturtle()
-
-LETTERS_START_POS = [-100, -200]
 
 last_man_pos = None
 def draw_gallow():
@@ -37,7 +38,10 @@ def draw_gallow():
 
 def write_text(text):
     t.write(text, False, font=("monospace", 35, "normal"))
+    prev_direction = t.heading()
+    t.setheading(180)
     t.forward(-50)
+    t.setheading(prev_direction)
 
 def draw_answer_lines():
     t.up()
@@ -50,12 +54,14 @@ def draw_answer_lines():
 
 def reveal_letter(letter, position):
     t.up()
+    t.speed(0)
     t.goto(LETTERS_START_POS[0], LETTERS_START_POS[1])
 
     for i in range(0, position):
         write_text('__ ')
 
     write_text(' ' + letter)
+    t.speed(DRAWMAN_SPEED)
     
 def drawMan(x):
     global last_man_pos
@@ -64,7 +70,7 @@ def drawMan(x):
         t.goto(last_man_pos[0], last_man_pos[1])
         
     guess = x
-    t.speed(1)
+    t.speed(DRAWMAN_SPEED)
     t.down()
     if guess == 1:
         # Head
