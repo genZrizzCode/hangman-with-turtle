@@ -4,7 +4,6 @@ import time
 t = turtle.Turtle()
 print('Only lowercase letters!\n')
 wordbank = [ 'smith', 'dog', 'yes', 'okay', 'sunday', 'we', 'cat', 'impacc', 'remote', 'wrong', 'short', 'video', 'super', 'idol']
-wordbank = [ 'impacc' ] 
 
 # Start Turtle
 def init_turtle():    
