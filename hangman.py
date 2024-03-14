@@ -2,8 +2,9 @@ import turtle
 import random
 import time
 t = turtle.Turtle()
+terminate = False
 print('Only lowercase letters!\n')
-wordbank = [ 'smith', 'dog', 'yes', 'okay', 'sunday', 'we', 'cat', 'impacc', 'remote', 'wrong', 'short', 'video', 'super', 'idol' ]
+wordbank = [ 'smith', 'dog', 'yes', 'okay', 'sunday', 'we', 'cat', 'impacc', 'remote', 'wrong', 'short', 'video', 'super', 'idol', 'wall', 'school', 'curriculum', 'circumstance', 'English', 'why', 'suspicious']
 
 LETTERS_START_POS = [-100, -200]
 DRAWMAN_SPEED = 1
@@ -67,6 +68,7 @@ def printFinalText(text):
     t.clear()
     t.goto(0, 0)
     t.write(text, True, "center", font=("Verdana", 100, "bold"))
+    t.goto(0,0)
     
 def drawMan(x):
     global last_man_pos
@@ -113,11 +115,12 @@ def drawMan(x):
     t.up()
 
     last_man_pos = t.pos()
-    
 
 answer = random.choice(wordbank)
 correct = list(answer)
 
+
+# while terminate == False:
 init_turtle()
 draw_gallow()
 draw_answer_lines()
@@ -125,12 +128,8 @@ draw_answer_lines()
 
 # Functionality
 correctGuess = []
-incorrect = []
 right = 0
 wrong = 0
-check = 0
-checkcheck = 0
-terminate = False
 
 MAX_WRONG_GUESSES = 6
 remaining_answer = list(answer)
@@ -173,7 +172,7 @@ def get_letter_input():
 while True:
     letter = get_letter_input()
 
-    if letter in incorrect_guesses:
+    if letter in incorrect_guesses or letter in correctGuess:
         print('You have already tried that one!')
         continue
     
@@ -184,6 +183,7 @@ while True:
             position = find_nth_occurrence(answer, letter, occurrence_count)
             remaining_answer.remove(letter)
             reveal_letter(letter, position)
+            correctGuess.append(letter)
             occurrence_count += 1
         print('Correct!')
     # wrong
@@ -198,13 +198,27 @@ while True:
         print('You lose!\n😥')
         time.sleep(5)
         break
+        # turtle.textinput('HANGMAN', 'Do you want to play again?\ny or n?')    
+        # if answer == 'y':
+        #     pass
+        # elif answer == 'n':
+        #     print('Stopped!')
+        #     terminate == True
 
     if len(remaining_answer) < 1:
         printFinalText('You Win!\n      😁')
         print('You win!\n😁')
         time.sleep(5)
         break
-    
+        # turtle.textinput('HANGMAN', 'Do you want to play again?\ny or n?')    
+        # if answer == 'y':
+        #     t.color('white')
+        #     printFinalText('You Win!\n      😁')
+        #     t.color('black')
+        #     pass
+        # elif answer == 'n':
+        #     print('Stopped!')
+        #     terminate == True
 
 
 
