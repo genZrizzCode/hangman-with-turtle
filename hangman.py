@@ -4,7 +4,7 @@ import time
 t = turtle.Turtle()
 terminate = False
 print('Only lowercase letters!\n')
-wordbank = [ 'smith', 'dog', 'yes', 'okay', 'sunday', 'we', 'cat', 'impacc', 'remote', 'wrong', 'short', 'video', 'super', 'idol', 'wall', 'school', 'curriculum', 'circumstance', 'english', 'why', 'suspicious']
+wordbank = [ 'smith', 'dog', 'yes', 'okay', 'sunday', 'we', 'cat', 'impacc', 'remote', 'wrong', 'short', 'video', 'super', 'idol', 'wall', 'school', 'curriculum', 'circumstance', 'english', 'why', 'suspicious', 'fudgel', 'code', 'git']
 
 LETTERS_START_POS = [-100, -200]
 DRAWMAN_SPEED = 1
